@@ -116,7 +116,43 @@ Upon completing the mandatory 3 laps, the high-level state machine switches to *
 2. It executes a sharp, calculated reverse turn into the bay.
 3. Counter-steering is applied to straighten the chassis once the rear ToF registers proximity to the back wall.
 4. The system cuts power and enters a permanent hardware-brake loop without exceeding boundary tolerances.
-٥.
+
+
+
+
+
+## 🔄 Hardware Evolution: Transitioning from Ultrasonic to ToF
+
+In the initial prototyping phase of our Open Category robot, we utilized **HC-SR04 Ultrasonic sensors** alongside an **ESP32** to establish baseline obstacle avoidance capabilities. However, to scale the project up for the high-performance demands of a **Raspberry Pi** ecosystem and ensure flawless navigation, we made a strategic engineering pivot to **Time-of-Flight (ToF)** laser technology.
+
+### 📊 Technology Comparative Analysis
+
+| Feature / Metric | Ultrasonic Sensor (HC-SR04) | Time-of-Flight (ToF) Sensor |
+| :--- | :--- | :--- |
+| **Operating Principle** | Emits acoustic sound waves; measures echo return time. | Emits invisible laser photons; measures light travel time. |
+| **Precision & Resolution** | Centimeter-level accuracy; prone to atmospheric noise. | **Millimeter-level precision**; exceptionally sharp and stable. |
+| **Field of View (FoV)** | Wide conical beam (~15°–30°); can trigger false positives from side walls. | Narrow, highly focused beam; targets exact coordinates without side interference. |
+| **Surface Independence** | Easily fooled by sound-absorbing materials (cloth, foam) or angled walls. | Completely **independent of target color, texture, or reflection angle**. |
+| **Form Factor & Weight** | Bulky "eyes" design; requires significant physical chassis real estate. | **Micro-sized footprint**; seamlessly integrates into compact, streamlined designs. |
+| **Latency & Speed** | Limited by the speed of sound, creating a processing bottleneck. | Operates at the speed of light; delivers **near-instantaneous feedback**. |
+
+---
+
+### 🎯 Engineering Rationale: Why We Upgraded
+
+> **Design Note:** Moving from the initial prototype to a production-ready robot required shifting our focus from *"does it work on the desk?"* to *"is it reliable on the track?"*
+
+* **Eliminating the Processing Bottleneck:** The Raspberry Pi handles complex localization and mapping algorithms at high frequencies. The acoustic delay inherent to Ultrasonic sensors acted as a system bottleneck. Switching to ToF allowed us to feed real-time, high-speed data directly into our processing loops.
+* **Streamlining the Mechanical Design:** Transitioning to ToF allowed us to shed unnecessary front-end weight and eliminate bulky component mounts, leading to a much more aerodynamic and compact chassis.
+* **Overcoming Specular Reflection:** During open-course testing, angled obstacles often deflected ultrasonic waves away from the receiver, causing blind spots and subsequent collisions. The ToF's laser pulses guarantee a direct, accurate return path regardless of the obstacle's orientation.
+
+
+
+
+
+
+
+
 
 
 
