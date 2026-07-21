@@ -1,17 +1,3 @@
-/**
- * @file test_vl53l0x_tca9548a.cpp
- * @brief Diagnostic test for 3x VL53L0X Time-of-Flight (ToF) distance sensors using TCA9548A I2C Multiplexer.
- * @team RootIX - WRO Future Engineers
- * 
- * @board ESP32
- * @connections
- *  - ESP32 SDA (GPIO 21) -> TCA9548A SDA
- *  - ESP32 SCL (GPIO 22) -> TCA9548A SCL
- *  - TCA Channel 0 -> Front ToF Sensor (0x29)
- *  - TCA Channel 1 -> Right ToF Sensor (0x29)
- *  - TCA Channel 2 -> Left ToF Sensor (0x29)
- */
-
 #include <Wire.h>
 #include <Adafruit_VL53L0X.h>
 
