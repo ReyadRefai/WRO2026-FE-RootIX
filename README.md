@@ -40,6 +40,23 @@ Below is a showcase of our raw mechanical components and chassis parts before as
 
 
 
+### Robot Dimensions
+
+| Dimension | Base Chassis (Before) | Assembled Robot (After) |
+| :--- | :--- | :--- |
+| **Length** | 248 mm | |
+| **Width** | 146 mm | |
+| **Height** | 70 mm | |
+
+
+
+
+
+
+
+
+
+
 
 ## ⚡ Power Distribution & Wiring Architecture
 
