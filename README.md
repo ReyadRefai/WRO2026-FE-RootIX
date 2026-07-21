@@ -196,7 +196,7 @@ The table below outlines the comprehensive hardware configuration integrated int
 
 
 
-
+## 🧠 System Architecture & Communication Protocol
 
 
 Our autonomous vehicle utilizes a **Distributed Computing Architecture** to split high-level cognitive tasks from low-level real-time actuation, ensuring zero-latency responses during high-speed navigation.
