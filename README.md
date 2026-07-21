@@ -4,6 +4,58 @@
 # Hello! we are RootIX team. 
 # WRO - Future Engineers-Robotics Project Documentation
 
+
+
+
+
+
+
+
+
+
+
+##  READ.ME Table of Contents 
+
+1. [🚀 Project Overview](#-project-overview)
+2. [Team Members](#team-members)
+3. [🛠️ Hardware Platform & Mechanical Base](#️-hardware-platform--mechanical-base)
+   - 3.1. [📦 Base Kit Components (Before Additions)](#-base-kit-components-before-additions)
+   - 3.2. [📼 Unboxing & Raw Kit Components](#-unboxing--raw-kit-components)
+4. [Robot Dimensions](#robot-dimensions)
+5. [⚡ Power Distribution & Wiring Architecture](#-power-distribution--wiring-architecture)
+   - 5.1. [Separated Power Domains](#1-separated-power-domains)
+   - 5.2. [Signal Routing & Data Buses](#2-signal-routing--data-buses)
+6. [⚙️ Mechanical Dynamics & Chassis Optimization](#️-mechanical-dynamics--chassis-optimization)
+   - 6.1. [⚙️ Drive Motor Specifications & Analysis](#️-drive-motor-specifications--analysis)
+   - 6.2. [⚙️ Ackermann Kinematics & Steering Control](#️-ackermann-kinematics--steering-control)
+7. [⚙️ PID Steering Controller](#️-pid-steering-controller)
+8. [📊 Hardware Bill of Materials (BOM) & System Integration](#-hardware-bill-of-materials-bom--system-integration)
+9. [🧠 System Architecture & Communication Protocol](#-system-architecture--communication-protocol)
+   - 9.1. [📊 Hardware Task Allocation](#-hardware-task-allocation)
+   - 9.2. [🔌 Inter-Processor Communication (IPC) via UART](#-inter-processor-communication-ipc-via-uart)
+10. [🤖 Autonomous Navigation & Vision Pipelines](#-autonomous-navigation--vision-pipelines)
+    - 10.1. [Wall-Following & Lane Centering (Open Challenge)](#1-wall-following--lane-centering-open-challenge)
+    - 10.2. [Color-Based Obstacle Avoidance (Obstacle Challenge)](#2-color-based-obstacle-avoidance-obstacle-challenge)
+    - 10.3. [Precision Parallel Parking (Magenta Finish Line)](#3-precision-parallel-parking-magenta-finish-line)
+11. [🔄 Hardware Evolution: Transitioning from Ultrasonic to ToF](#-hardware-evolution-transitioning-from-ultrasonic-to-tof)
+    - 11.1. [📊 Technology Comparative Analysis](#-technology-comparative-analysis)
+    - 11.2. [🎯 Engineering Rationale: Why We Upgraded](#-engineering-rationale-why-we-upgraded)
+    - 11.3. [🔄 Sensor Transition: From Color Sensor to IMU](#-sensor-transition-from-color-sensor-to-imu)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 🚀 Project Overview
 
 Welcome to the official repository of team **RootiX**! We are Mechatronics Engineering students from **Birzeit University**, united by a shared passion for robotics, automation, and intelligent systems. This repository serves as a comprehensive chronicle of our development journey for the **WRO Future Engineers** competition. Utilizing a ready-made hardware kit as our physical platform, our engineering focus was driven by advanced programming, software architecture, and embedded systems control developed entirely on our laptops. Within these pages, we thoroughly document our complete software lifecycle, highlighting how we transformed hardware into a smart autonomous vehicle. From writing control algorithms and integrating sensors to the final crucial stages of system calibration and rigorous performance testing on the track, we invite you to explore our engineering process.
@@ -13,6 +65,15 @@ Welcome to the official repository of team **RootiX**! We are Mechatronics Engin
 - 🔹 Israa Anbar
 - 🔹 Reyad Refai
 
+
+
+
+
+
+
+
+
+ 
 
 ## 🛠️ Hardware Platform & Mechanical Base
 
