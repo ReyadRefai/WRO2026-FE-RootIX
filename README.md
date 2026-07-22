@@ -340,14 +340,14 @@ Upon completing the mandatory 3 laps, the high-level state machine switches to *
 
 
 
-# Sensor Selection Report: Ultrasonic vs. Time-of-Flight (ToF)
+# 🔄Sensor Selection Report: Ultrasonic vs. Time-of-Flight (ToF)
 
 ## Introduction & Testing Context
 During the development of our robot for WRO Future Engineers, we evaluated both **Time-of-Flight (ToF - VL53L0X)** and **Ultrasonic (HC-SR04)** sensors. Our objective was to select the sensing technology that provides the highest reliability, repeatability, and robustness under real-world track conditions.
 
 ---
 
-## Comparison Table
+## 📊Comparison Table
 
 | Comparison Factor | ToF Sensor (VL53L0X) | Ultrasonic Sensor (HC-SR04) |
 | :--- | :--- | :--- |
@@ -358,7 +358,7 @@ During the development of our robot for WRO Future Engineers, we evaluated both 
 
 ---
 
-## Rationale for Sensor Selection
+## 🎯Rationale for Sensor Selection
 
 During extensive field testing, we observed that the ToF sensor produced less consistent measurements when detecting low-reflectivity (dark) surfaces. In contrast, the ultrasonic sensor maintained stable distance measurements regardless of obstacle color and provided a wider sensing area, making it more suitable for reliable wall and obstacle detection throughout the competition track. Since robustness and repeatability were our primary design goals, we selected the ultrasonic sensor as the final solution.
 
