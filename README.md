@@ -37,9 +37,10 @@
     - 10.1. [Wall-Following & Lane Centering (Open Challenge)](#1-wall-following--lane-centering-open-challenge)
     - 10.2. [Color-Based Obstacle Avoidance (Obstacle Challenge)](#2-color-based-obstacle-avoidance-obstacle-challenge)
     - 10.3. [Precision Parallel Parking (Magenta Finish Line)](#3-precision-parallel-parking-magenta-finish-line)
-11. [🔄 Hardware Evolution: Transitioning from Ultrasonic to ToF](#-hardware-evolution-transitioning-from-ultrasonic-to-tof)
-    - 11.1. [📊 Technology Comparative Analysis](#-technology-comparative-analysis)
-    - 11.2. [🎯 Engineering Rationale: Why We Upgraded](#-engineering-rationale-why-we-upgraded)
+11. 🔄 [Sensor Selection Report: Ultrasonic vs. Time-of-Flight (ToF)](#sensor-selection-report-ultrasonic-vs-time-of-flight-tof)
+    * 11.1. [Introduction & Testing Context](#introduction--testing-context)
+    * 11.2. 📊 [Comparison Table](#comparison-table)
+    * 11.3. 🎯 [Rationale for Sensor Selection](#rationale-for-sensor-selection)
     - 11.3. [🔄 Sensor Transition: From Color Sensor to IMU](#-sensor-transition-from-color-sensor-to-imu)
 
 
