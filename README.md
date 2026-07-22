@@ -239,7 +239,7 @@ The table below outlines the comprehensive hardware configuration integrated int
 | **4** | **400 Tie-Point Half-Size Breadboard** | <img width="647" height="447" alt="بورد " src="https://github.com/user-attachments/assets/e1194e10-bcc3-41af-b6d0-c00d9a977f55" /> | 1 | 9 ILS | • 400 tie-in points with standard 2.54mm pin spacing.<br>• Dual power distribution rails.<br>• Self-adhesive backing. | • **Solderless System Integration Deck:** Serves as a modular physical host platform for expansion modules and peripheral pull-up/pull-down resistor networks.<br>• **Power Rail Segregation:** Isolates 3.3V and 5V power domains systematically to eliminate capacitive cross-talk between adjacent signal buses. |
 | **5** | **18650 Li-Ion Battery Cells** | <img width="288" height="313" alt="بطارية 2" src="https://github.com/user-attachments/assets/4d17b0bc-e607-49c6-9436-c8f4b6c1a3a1" />| 2 | 15 ILS | • Rechargeable Lithium-Ion chemistry.<br>• 18650 cylindrical form factor.<br>• 3.7V nominal voltage.<br>• High energy density. | • **Low-Impedance Electrochemical Power Source:** Provides a lightweight, high energy-density power plant optimized for autonomous mobile platforms.<br>• **Flat Discharge Curve Integration:** Guarantees a sustained operational current supply, maintaining uniform motor torque characteristics and repeatable kinematic mapping over extended run-times. |
 | **6** | **Type-C 15W 3A Li-Ion Battery Charger & UPS Module** | <img width="263" height="224" alt="WhatsApp Image 2026-07-16 at 8 40 07 PM" src="https://github.com/user-attachments/assets/14a6e8f6-ffab-4967-a0b2-a4e1ab270e29" /> | 1 | 35 ILS | • Type-C charging interface.<br>• Seamless UPS power switching.<br>• Configurable step-up output.<br>• Integrated cell protection. | • **Continuous Telemetry Power Switching (UPS):** Allows the vehicle to transition seamlessly between external USB debugging power and internal battery power without inducing processor brownouts.<br>• **Integrated Voltage Regulation:** Coordinates dynamic step-up power conversions to meet structural systemic voltage requirements. |
-| **7** | **VL53L0X Time-of-Flight (ToF) Laser Sensor** |<img width="364" height="246" alt="لقطة شاشة 2026-07-17 133549" src="https://github.com/user-attachments/assets/a3396e91-1c02-4613-b22c-40824dbe5b95" /> | 3 | 22 ILS | • 940nm VCSEL infrared laser.<br>• Time-of-Flight (ToF) architecture.<br>• Ranging up to 2.0m.<br>• I2C Interface communication. | • **Lambertian-Independent Spatial Mapping:** Executes ultra-precise distance evaluation via photon flight-time measurements, generating target reflectivity-independent and color-blind distance tracking data.<br>• **Multi-Axis Spatial Obstacle Avoidance:** Deployed in a tri-directional array for sub-millimetric lane centering and real-time collision avoidance vector calculations. |
+| **7** | **HC-SR04 Ultrasonic Ranging Module** | <img width="308" height="185" alt="لقطة شاشة 2026-07-22 211732" src="https://github.com/user-attachments/assets/d253bee6-22d6-4f9a-86c0-c8b02ba357a9" /> | 3|22 ILS | • Operating voltage: 5V DC.<br>• Quiescent current: <2mA.<br>• Measuring angle: <15°.<br>• Detection range: 2cm – 500cm.<br>• Resolution: 1cm (40kHz frequency). | • **Optical-Reflectivity Independence:** Utilizes 40kHz acoustic wave propagation to ensure stable distance measurements regardless of obstacle color, dark surfaces, or ambient lighting variations.<br>• **Acoustic Spatial Cone Coverage:** Offers a wider sensing angle (<15°) optimized for reliable track wall detection and continuous spatial alignment during autonomous navigation.<br>• **Robust Distance Telemetry:** Provides high-repeatability proximity data to the low-level control loop, eliminating infrared absorption issues present in optical ToF sensors. |
 | **8** | **TCA9548A I2C 8-Channel Multiplexer Board** | <img width="310" height="232" alt="لقطة شاشة 2026-07-17 133747" src="https://github.com/user-attachments/assets/adcbb693-9afc-4352-beaa-57373da6f349" /> | 1 | 35 ILS | • 1-to-8 bidirectional switches.<br>• Configurable I2C address (0x70-0x77).<br>• 3V–5V logic level tolerant. | • **I2C Bus Hardware Conflict Resolution:** Resolves static physical hardware address overlapping by mapping multiple identical address sensors onto isolated, individually selectable sub-buses.<br>• **Synchronous Spatial Polling:** Enables deterministic sequential sampling of multi-sensor arrays through a single primary microcontroller hardware master I2C interface. |
 | **9** | **Raspberry Pi Camera Module OV5647 5MP (175° Fisheye)** | <img width="347" height="274" alt="لقطة شاشة 2026-07-21 145240" src="https://github.com/user-attachments/assets/fe74dc21-eeed-473b-97d4-5ac62ce785bb" />| 1 | 185 ILS | • Sensor: OV5647 (5 Megapixel).<br>• Resolution: 2592 x 1944.<br>• FOV: 175 Degrees.<br>• Video: 1080p @ 30fps (H.264) / 90fps @ VGA. | • **Vision System:** Provides wide-angle visual data for OpenCV processing, autonomous navigation, and wide-field obstacle detection. |
 | **10** | **Raspberry Pi 5 Single Board Computer (SBC)** | <img width="1080" height="1215" alt="ريزباري" src="https://github.com/user-attachments/assets/3c09fe14-3e5a-4198-a920-bf60aef37a67" /> | 1 | 1050 ILS | • Broadcom BCM2712 2.4GHz quad-core CPU.<br>• LPDDR4X high-speed SDRAM.<br>• Dual 4-lane MIPI transceivers. | • **High-Level Heterogeneous Computing Platform:** Executes computer vision operations (OpenCV), processes color-space segmentations, calculates localized trajectory matrices, and maintains the primary state-machine control loop.<br>• **Parallel Algorithm Multithreading:** Handles multi-threaded asynchronous sensor parsing pipelines to minimize overall decision-to-actuation system latency. |
@@ -339,31 +339,27 @@ Upon completing the mandatory 3 laps, the high-level state machine switches to *
 
 
 
+# Sensor Selection Report: Ultrasonic vs. Time-of-Flight (ToF)
 
-## 🔄 Hardware Evolution: Transitioning from Ultrasonic to ToF
-
-In the initial prototyping phase of our Open Category robot, we utilized **HC-SR04 Ultrasonic sensors** alongside an **ESP32** to establish baseline obstacle avoidance capabilities. However, to scale the project up for the high-performance demands of a **Raspberry Pi** ecosystem and ensure flawless navigation, we made a strategic engineering pivot to **Time-of-Flight (ToF)** laser technology.
-
-### 📊 Technology Comparative Analysis
-
-| Feature / Metric | Ultrasonic Sensor (HC-SR04) | Time-of-Flight (ToF) Sensor |
-| :--- | :--- | :--- |
-| **Operating Principle** | Emits acoustic sound waves; measures echo return time. | Emits invisible laser photons; measures light travel time. |
-| **Precision & Resolution** | Centimeter-level accuracy; prone to atmospheric noise. | **Millimeter-level precision**; exceptionally sharp and stable. |
-| **Field of View (FoV)** | Wide conical beam (~15°–30°); can trigger false positives from side walls. | Narrow, highly focused beam; targets exact coordinates without side interference. |
-| **Surface Independence** | Easily fooled by sound-absorbing materials (cloth, foam) or angled walls. | Completely **independent of target color, texture, or reflection angle**. |
-| **Form Factor & Weight** | Bulky "eyes" design; requires significant physical chassis real estate. | **Micro-sized footprint**; seamlessly integrates into compact, streamlined designs. |
-| **Latency & Speed** | Limited by the speed of sound, creating a processing bottleneck. | Operates at the speed of light; delivers **near-instantaneous feedback**. |
+## Introduction & Testing Context
+During the development of our robot for WRO Future Engineers, we evaluated both **Time-of-Flight (ToF - VL53L0X)** and **Ultrasonic (HC-SR04)** sensors. Our objective was to select the sensing technology that provides the highest reliability, repeatability, and robustness under real-world track conditions.
 
 ---
 
-### 🎯 Engineering Rationale: Why We Upgraded
+## Comparison Table
 
-> **Design Note:** Moving from the initial prototype to a production-ready robot required shifting our focus from *"does it work on the desk?"* to *"is it reliable on the track?"*
+| Comparison Factor | ToF Sensor (VL53L0X) | Ultrasonic Sensor (HC-SR04) |
+| :--- | :--- | :--- |
+| **Surface Reflectivity** | Performance decreases on low-reflectivity (dark) surfaces. | Independent of surface color or optical reflectivity. |
+| **Ambient Light** | May degrade under strong direct sunlight. | Unaffected by lighting conditions. |
+| **Beam Angle** | Narrow field of view, enabling precise point measurements. | Wider sensing cone for obstacle and wall detection. |
+| **Typical Strength** | High precision at short distances. | Stable detection across different surface colors and materials. |
 
-* **Eliminating the Processing Bottleneck:** The Raspberry Pi handles complex localization and mapping algorithms at high frequencies. The acoustic delay inherent to Ultrasonic sensors acted as a system bottleneck. Switching to ToF allowed us to feed real-time, high-speed data directly into our processing loops.
-* **Streamlining the Mechanical Design:** Transitioning to ToF allowed us to shed unnecessary front-end weight and eliminate bulky component mounts, leading to a much more aerodynamic and compact chassis.
-* **Overcoming Specular Reflection:** During open-course testing, angled obstacles often deflected ultrasonic waves away from the receiver, causing blind spots and subsequent collisions. The ToF's laser pulses guarantee a direct, accurate return path regardless of the obstacle's orientation.
+---
+
+## Rationale for Sensor Selection
+
+During extensive field testing, we observed that the ToF sensor produced less consistent measurements when detecting low-reflectivity (dark) surfaces. In contrast, the ultrasonic sensor maintained stable distance measurements regardless of obstacle color and provided a wider sensing area, making it more suitable for reliable wall and obstacle detection throughout the competition track. Since robustness and repeatability were our primary design goals, we selected the ultrasonic sensor as the final solution.
 
 
 
